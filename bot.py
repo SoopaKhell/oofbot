@@ -83,8 +83,8 @@ def get_oof_leaderboard():
 def set_oof_leaderboard(board):
     # sets oof leaderboard from dict
     with open("oof_leaderboard.txt", "w") as f:
-        for key, value in board.items():
-            f.write(key + ":" + str(value) + "\n")
+        for key in sorted(board, key=board.get, reverse=True):
+            f.write(key + ": " + str(board[key]) + "\n")
 
 # run the bot
 client.run(token)
